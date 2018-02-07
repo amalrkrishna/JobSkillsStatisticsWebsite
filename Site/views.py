@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404, redirect
-from myApp.forms import *
-from myApp.models import *
+from Site.forms import *
+from Site.models import *
 import datetime
 
 
