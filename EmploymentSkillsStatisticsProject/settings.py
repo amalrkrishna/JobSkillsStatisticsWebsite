@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myApp.apps.MyappConfig',
+    'Site.apps.SiteConfig',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'CS673_project.urls'
+ROOT_URLCONF = 'EmploymentSkillsStatisticsProject.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'CS673_project.wsgi.application'
+WSGI_APPLICATION = 'EmploymentSkillsStatisticsProject.wsgi.application'
 
 
 # Database

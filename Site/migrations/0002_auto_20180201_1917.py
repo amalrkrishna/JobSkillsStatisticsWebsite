@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('myApp', '0001_initial'),
+        ('Site', '0001_initial'),
     ]
 
     operations = [
