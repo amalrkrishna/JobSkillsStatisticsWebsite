@@ -2,27 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7c910f3-f096-4617-bec9-2abaf61e924f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Scraper/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Site/models.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CS673_project/__init__.py" afterPath="$PROJECT_DIR$/DataAccess/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/CS673_project/settings.py" afterPath="$PROJECT_DIR$/EmploymentSkillsStatisticsProject/settings.py" />
-      <change beforePath="$PROJECT_DIR$/CS673_project/urls.py" afterPath="$PROJECT_DIR$/EmploymentSkillsStatisticsProject/urls.py" />
-      <change beforePath="$PROJECT_DIR$/CS673_project/wsgi.py" afterPath="$PROJECT_DIR$/EmploymentSkillsStatisticsProject/wsgi.py" />
+      <change beforePath="$PROJECT_DIR$/Site/admin.py" afterPath="$PROJECT_DIR$/Site/admin.py" />
+      <change beforePath="$PROJECT_DIR$/Site/models.py" afterPath="$PROJECT_DIR$/Site/models.py" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
-      <change beforePath="$PROJECT_DIR$/myApp/__init__.py" afterPath="$PROJECT_DIR$/EmploymentSkillsStatisticsProject/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/myApp/admin.py" afterPath="$PROJECT_DIR$/Site/admin.py" />
-      <change beforePath="$PROJECT_DIR$/myApp/apps.py" afterPath="$PROJECT_DIR$/Site/apps.py" />
-      <change beforePath="$PROJECT_DIR$/myApp/forms.py" afterPath="$PROJECT_DIR$/Site/forms.py" />
-      <change beforePath="$PROJECT_DIR$/myApp/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/Site/migrations/0001_initial.py" />
-      <change beforePath="$PROJECT_DIR$/myApp/migrations/0002_auto_20180201_1917.py" afterPath="$PROJECT_DIR$/Site/migrations/0002_auto_20180201_1917.py" />
-      <change beforePath="$PROJECT_DIR$/myApp/migrations/__init__.py" afterPath="$PROJECT_DIR$/Site/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/myApp/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/myApp/tests.py" afterPath="$PROJECT_DIR$/Site/tests.py" />
-      <change beforePath="$PROJECT_DIR$/myApp/views.py" afterPath="$PROJECT_DIR$/Site/views.py" />
-      <change beforePath="$PROJECT_DIR$/old/DataAccess/__init__.py" afterPath="$PROJECT_DIR$/Site/migrations/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/old/Scraper/__init__.py" afterPath="$PROJECT_DIR$/Site/migrations/__init__.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,8 +28,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Site/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+            <state relative-caret-position="302">
+              <caret line="24" column="54" lean-forward="true" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -90,7 +72,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Site/admin.py" />
         <option value="$PROJECT_DIR$/Site/views.py" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/Site/forms.py" />
@@ -101,6 +82,7 @@
         <option value="$PROJECT_DIR$/myApp/models.py" />
         <option value="$PROJECT_DIR$/Site/apps.py" />
         <option value="$PROJECT_DIR$/CS673_project/settings.py" />
+        <option value="$PROJECT_DIR$/Site/admin.py" />
         <option value="$PROJECT_DIR$/Site/models.py" />
       </list>
     </option>
@@ -228,14 +210,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -427,14 +408,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Site/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Site/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -451,10 +424,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Site/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Site/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+        <state relative-caret-position="302">
+          <caret line="24" column="54" lean-forward="true" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
