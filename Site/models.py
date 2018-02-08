@@ -27,6 +27,79 @@ class JobPosting(models.Model):
     category = models.ForeignKey(JobSkill, null=True, blank=True, on_delete=models.CASCADE)
     skills = models.CharField(blank=True, max_length=500)
 
+    def save(self):
+        # change full name state to its abbreviation
+        state_abbreviation_list = [
+            ('Alabama', 'AL'),
+            ('Alaska', 'AK'),
+            ('Arizona', 'AZ'),
+            ('Arkansas', 'AR'),
+            ('California', 'CA'),
+            ('Colorado', 'CO'),
+            ('Connecticut', 'CT'),
+            ('Delaware', 'DE'),
+            ('Florida', 'FL'),
+            ('Georgia', 'GA'),
+            ('Hawaii', 'HI'),
+            ('Idaho', 'ID'),
+            ('Illinois', 'IL'),
+            ('Indiana', 'IN'),
+            ('Iowa', 'IA'),
+            ('Kansas', 'KS'),
+            ('Kentucky', 'KY'),
+            ('Louisiana', 'LA'),
+            ('Maine', 'ME'),
+            ('Maryland', 'MD'),
+            ('Massachusetts', 'MA'),
+            ('Michigan', 'MI'),
+            ('Minnesota', 'MN'),
+            ('Mississippi', 'MS'),
+            ('Missouri', 'MO'),
+            ('Montana', 'MT'),
+            ('Nebraska', 'NE'),
+            ('Nevada', 'NV'),
+            ('New Hampshire', 'NH'),
+            ('New Jersey', 'NJ'),
+            ('New Mexico', 'NM'),
+            ('New York', 'NY'),
+            ('North Carolina', 'NC'),
+            ('North Dakota', 'ND'),
+            ('Ohio', 'OH'),
+            ('Oklahoma', 'OK'),
+            ('Oregon', 'OR'),
+            ('Pennsylvania', 'PA'),
+            ('Rhode Island', 'RI'),
+            ('South Carolina', 'SC'),
+            ('South Dakota', 'SD'),
+            ('Tennessee', 'TN'),
+            ('Texas', 'TX'),
+            ('Utah', 'UT'),
+            ('Vermont', 'VT'),
+            ('Virginia', 'VA'),
+            ('Washington', 'WA'),
+            ('West Virginia', 'WV'),
+            ('Wisconsin', 'WI'),
+            ('Wyoming', 'WY'),
+            ('Guam', 'GU'),
+            ('Puerto Rico', 'PR'),
+            ('Virgin Islands', 'VI'),
+            ('District of Columbia', 'DC'),
+            ('American Samoa', 'AS'),
+            ('Federated States of Micronesia', 'FM'),
+            ('Marshall Islands', 'MH'),
+            ('Northern Mariana Islands', 'MP'),
+            ('Palau', 'PW')
+        ]
+        found = False
+        if len(self.state) > 2:
+            for full_name, abbreviation in state_abbreviation_list:
+                if self.state.lower() == full_name.lower():
+                    self.state = abbreviation
+                    found = True
+        if not len(self.state) == 2 and not found:
+            self.state = ''  # changes to empty string if invalid state
+        super(JobPosting, self).save()
+
 
 class JobPostingAdmin(admin.ModelAdmin):
     list_display = ('title', 'company')
