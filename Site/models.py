@@ -9,7 +9,7 @@ import datetime
 
 class JobSkill(models.Model):
     name = models.CharField(max_length=64, unique=True)
-    skills = models.CharField(max_length=500)
+    skills = models.TextField(max_length=500, help_text='Separate entries with a comma and no space.')
 
     def __str__(self):
         return self.name
@@ -17,15 +17,15 @@ class JobSkill(models.Model):
 
 class JobPosting(models.Model):
     title = models.CharField(max_length=64)
-    company = models.CharField(blank=True, max_length=64)
-    description = models.TextField(blank=True, max_length=10000)
-    city = models.CharField(blank=True, max_length=64)
-    state = models.CharField(blank=True, max_length=2)  # convert to abbreviation
+    company = models.CharField(blank=True, max_length=64, default='')
+    description = models.TextField(blank=True, max_length=10000, default='')
+    city = models.CharField(blank=True, max_length=64, default='')
+    state = models.CharField(blank=True, max_length=2, default='')
     date_posted = models.DateTimeField(null=True, blank=True, auto_now=False)
     date_entered = models.DateTimeField(auto_now=True)
     is_sponsored = models.BooleanField(verbose_name="Sponsored")
     category = models.ForeignKey(JobSkill, null=True, blank=True, on_delete=models.CASCADE)
-    skills = models.CharField(blank=True, max_length=500)
+    skills = models.CharField(blank=True, max_length=500, default='')
 
     def save(self):
         # change full name state to its abbreviation
