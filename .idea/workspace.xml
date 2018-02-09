@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7c910f3-f096-4617-bec9-2abaf61e924f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Site/admin.py" afterPath="$PROJECT_DIR$/Site/admin.py" />
-      <change beforePath="$PROJECT_DIR$/Site/models.py" afterPath="$PROJECT_DIR$/Site/models.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/DataAccess/internal.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/DataAccess/util.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Scraper/CollectData.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Site/preprocessing.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/scrapped.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/visualizations.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +35,7 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Site/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
+            <state relative-caret-position="113">
               <caret line="36" column="68" lean-forward="false" selection-start-line="36" selection-start-column="68" selection-end-line="36" selection-end-column="68" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
@@ -440,7 +445,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Site/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
+        <state relative-caret-position="113">
           <caret line="36" column="68" lean-forward="false" selection-start-line="36" selection-start-column="68" selection-end-line="36" selection-end-column="68" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
