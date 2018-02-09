@@ -5,4 +5,4 @@ from Site.models import *
 
 
 admin.site.register(JobPosting, JobPostingAdmin)
-admin.site.register(JobSkill)
+admin.site.register(JobSkill, JobSkillAdmin)

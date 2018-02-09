@@ -7,12 +7,22 @@ from django.conf import settings
 import datetime
 
 
+JOB_CATEGORIES = (
+    ('data_scientist', 'Data Scientist'),
+    ('', '')
+)
+
+
 class JobSkill(models.Model):
-    name = models.CharField(max_length=64, unique=True)
-    skills = models.TextField(max_length=500, help_text='Separate entries with a comma and no space.')
+    category = models.CharField(max_length=64, choices=JOB_CATEGORIES)
+    skill = models.CharField(max_length=64)
 
     def __str__(self):
-        return self.name
+        return self.skill
+
+
+class JobSkillAdmin(admin.ModelAdmin):
+    list_display = ('skill', 'category')
 
 
 class JobPosting(models.Model):
@@ -24,8 +34,7 @@ class JobPosting(models.Model):
     date_posted = models.DateTimeField(null=True, blank=True, auto_now=False)
     date_entered = models.DateTimeField(auto_now=True)
     is_sponsored = models.BooleanField(verbose_name="Sponsored")
-    category = models.ForeignKey(JobSkill, null=True, blank=True, on_delete=models.CASCADE)
-    skills = models.CharField(blank=True, max_length=500, default='')
+    skills = models.ManyToManyField(JobSkill, blank=True, default='')
 
     def save(self):
         # change full name state to its abbreviation
