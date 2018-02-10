@@ -5,13 +5,13 @@ from django.contrib import admin
 from django.template.defaultfilters import slugify
 from django.conf import settings
 import datetime
+from _overlapped import NULL
 
 
 JOB_CATEGORIES = (
     ('data_scientist', 'Data Scientist'),
     ('', '')
 )
-
 
 class JobSkill(models.Model):
     category = models.CharField(max_length=64, choices=JOB_CATEGORIES)
@@ -112,3 +112,11 @@ class JobPosting(models.Model):
 
 class JobPostingAdmin(admin.ModelAdmin):
     list_display = ('title', 'company')
+    
+class JobSkillCount(models.Model):
+    job_skill = models.ForeignKey(
+        'JobSkill',
+        on_delete = models.CASCADE,
+        default = NULL)
+    posted_count = models.IntegerField(default=0)
+
