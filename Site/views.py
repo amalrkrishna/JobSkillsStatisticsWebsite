@@ -10,7 +10,6 @@ import datetime
 
 def home(request):
     job_postings = JobPosting.objects.all()  # order by date
-
     return render(request, 'home.html', {'job_postings': job_postings})
 
 class Plot(TemplateView):

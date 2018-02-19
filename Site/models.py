@@ -10,7 +10,7 @@ from _overlapped import NULL
 
 JOB_CATEGORIES = (
     ('data_scientist', 'Data Scientist'),
-    ('', '')
+    ('test', 'Test')
 )
 
 class JobSkill(models.Model):
@@ -26,11 +26,12 @@ class JobSkillAdmin(admin.ModelAdmin):
 
 
 class JobPosting(models.Model):
+    # job_id = models.CharField(max_length=16, unique=True)  # default=None
     title = models.CharField(max_length=64)
     company = models.CharField(blank=True, max_length=64, default='')
     description = models.TextField(blank=True, max_length=10000, default='')
     city = models.CharField(blank=True, max_length=64, default='')
-    state = models.CharField(blank=True, max_length=2, default='')
+    state = models.CharField(blank=True, max_length=2, default='', help_text='State abbreviations only.')
     date_posted = models.DateTimeField(null=True, blank=True, auto_now=False)
     date_entered = models.DateTimeField(auto_now=True)
     is_sponsored = models.BooleanField(verbose_name="Sponsored")
@@ -107,10 +108,12 @@ class JobPosting(models.Model):
                     found = True
         if not len(self.state) == 2 and not found:
             self.state = ''  # changes to empty string if invalid state
+        self.state.upper()
         super(JobPosting, self).save()
 
 
 class JobPostingAdmin(admin.ModelAdmin):
+<<<<<<< HEAD
     list_display = ('title', 'company')
     
 class JobSkillCount(models.Model):
@@ -120,3 +123,6 @@ class JobSkillCount(models.Model):
         default = NULL)
     posted_count = models.IntegerField(default=0)
 
+=======
+    list_display = ('title', 'company', 'city', 'state', 'date_posted')
+>>>>>>> peter
