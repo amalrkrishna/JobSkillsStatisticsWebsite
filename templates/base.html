@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	{% block head %}
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CS673 Project</title>
@@ -11,11 +13,14 @@
     <link href="{% static 'css/Contact-Form-Clean.css' %}" rel="stylesheet">
     <link href="{% static 'css/Footer-Basic.css' %}" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{% static 'img/MeritDirect_logo.png' %}"/>
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery.mask.js' %}"></script>
+    
+    {% endblock %}
 </head>
 
 <body>
@@ -46,6 +51,6 @@
         <footer>
             
         </footer>
-    </div>
+    </div>  
 </body>
 </html>

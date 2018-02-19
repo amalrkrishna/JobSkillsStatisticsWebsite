@@ -19,5 +19,6 @@ from Site.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home)
+    url(r'^$', home),
+    url(r'^plot/', Plot.as_view(), name='plotURL'),
 ]
