@@ -9,7 +9,7 @@ import datetime
 
 JOB_CATEGORIES = (
     ('data_scientist', 'Data Scientist'),
-    ('', '')
+    ('test', 'Test')
 )
 
 
@@ -26,7 +26,7 @@ class JobSkillAdmin(admin.ModelAdmin):
 
 
 class JobPosting(models.Model):
-    job_id = models.CharField(max_length=16, unique=True)
+    # job_id = models.CharField(max_length=16, unique=True)  # default=None
     title = models.CharField(max_length=64)
     company = models.CharField(blank=True, max_length=64, default='')
     description = models.TextField(blank=True, max_length=10000, default='')
@@ -113,4 +113,4 @@ class JobPosting(models.Model):
 
 
 class JobPostingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'company')
+    list_display = ('title', 'company', 'city', 'state', 'date_posted')
