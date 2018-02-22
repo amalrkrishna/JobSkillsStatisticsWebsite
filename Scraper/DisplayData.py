@@ -95,3 +95,93 @@ def GlassdoorPlot2():
     figure = go.Figure(data = [graphData], layout = graphLayout)
     plot_USJobOpen = plot(figure, output_type='div', include_plotlyjs=False)
     return plot_USJobOpen
+
+def GlassdoorPlot3():
+    Jan2018 = pd.read_excel('data/LPR_data-2018-01.xlsx')
+
+    USLabourForce = Jan2018[Jan2018['Measure'] == 'Labor Force Size']
+
+    graphData = go.Bar(
+        x=USLabourForce['Metro'],
+        y=USLabourForce['Value'],
+        marker=dict(color='red'),)
+    
+    '''url = py.plot([graphData], output_type='div', include_plotlyjs=False)'''
+    graphLayout = go.Layout(
+        title='Labor Force Size in top US Cities',
+        showlegend=False,
+        autosize=False,
+        width=500,
+        height=400,
+        xaxis=dict(
+            autorange=True,
+        ),
+        yaxis=dict(
+            autorange=True,
+            title="Labor"
+        )
+        )
+
+    figure = go.Figure(data = [graphData], layout = graphLayout)
+    plot_USLabourForce = plot(figure, output_type='div', include_plotlyjs=False)
+    return plot_USLabourForce
+
+def GlassdoorPlot4():
+    Jan2018 = pd.read_excel('data/LPR_data-2018-01.xlsx')
+
+    USUnEmp = Jan2018[Jan2018['Measure'] == 'Unemployment Rate']
+
+    graphData = go.Bar(
+        x=USUnEmp['Metro'],
+        y=USUnEmp['Value'],
+        marker=dict(color='green'),)
+    
+    '''url = py.plot([graphData], output_type='div', include_plotlyjs=False)'''
+    graphLayout = go.Layout(
+        title='Unemployment Rate in top US Cities',
+        showlegend=False,
+        autosize=False,
+        width=500,
+        height=400,
+        xaxis=dict(
+            autorange=True,
+        ),
+        yaxis=dict(
+            autorange=True,
+            title="Unemployment Rate"
+        )
+        )
+
+    figure = go.Figure(data = [graphData], layout = graphLayout)
+    plot_USUnEmp = plot(figure, output_type='div', include_plotlyjs=False)
+    return plot_USUnEmp
+
+def GlassdoorPlot5():
+    Jan2018 = pd.read_excel('data/LPR_data-2018-01.xlsx')
+
+    USTotEmp = Jan2018[Jan2018['Measure'] == 'Total Employment']
+
+    graphData = go.Bar(
+        x=USTotEmp['Metro'],
+        y=USTotEmp['Value'],
+        marker=dict(color='aqua'),)
+    
+    '''url = py.plot([graphData], output_type='div', include_plotlyjs=False)'''
+    graphLayout = go.Layout(
+        title='Total Employment in top US Cities',
+        showlegend=False,
+        autosize=False,
+        width=500,
+        height=400,
+        xaxis=dict(
+            autorange=True,
+        ),
+        yaxis=dict(
+            autorange=True,
+            title="Total Employment"
+        )
+        )
+
+    figure = go.Figure(data = [graphData], layout = graphLayout)
+    plot_USTotEmp = plot(figure, output_type='div', include_plotlyjs=False)
+    return plot_USTotEmp

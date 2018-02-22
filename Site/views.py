@@ -46,8 +46,12 @@ class PlotGlassDoor(TemplateView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(PlotGlassDoor, self).get_context_data(**kwargs)
-        context['plot'] = DisplayData.GlassdoorPlot1()
+        context['plot1'] = DisplayData.GlassdoorPlot1()
         context['plot2'] = DisplayData.GlassdoorPlot2()
+        context['plot3'] = DisplayData.GlassdoorPlot3()
+        context['plot4'] = DisplayData.GlassdoorPlot4()
+        context['plot5'] = DisplayData.GlassdoorPlot5()
+
         return context
 
 @csrf_exempt
