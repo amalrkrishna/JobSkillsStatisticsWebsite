@@ -73,7 +73,8 @@ def GlassdoorPlot2():
 
     graphData = go.Bar(
         x=USJobOpen['Metro'],
-        y=USJobOpen['Value'])
+        y=USJobOpen['Value'],
+        marker=dict(color='black'),)
     
     '''url = py.plot([graphData], output_type='div', include_plotlyjs=False)'''
     graphLayout = go.Layout(
