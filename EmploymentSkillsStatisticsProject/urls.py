@@ -19,7 +19,8 @@ from Site.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^landing/', landing_page),
-    url(r'^$', home),
-    
+    url(r'^database/', database),
+    url(r'^indeed/', indeed),
+    url(r'^glassdoor/', glassdoor),
+    url(r'^$', landing_page),
 ]
