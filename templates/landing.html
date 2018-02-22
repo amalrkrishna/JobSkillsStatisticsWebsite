@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS673 Project</title>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/Contact-Form-Clean.css' %}" rel="stylesheet">
+    <link href="{% static 'css/Footer-Basic.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/MeritDirect_logo.png' %}"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.mask.js' %}"></script>
+</head>
+
+<body>
+
+    {% block content %}
+    <br>
+    <h2 align="center"><b>Job Statistics Portal</b></h2><br><br>
+
+
+    <p align="center">This website is developed by 7 awesome folks for the CS673 Software Engineering class.</p>
+
+    <br>
+
+    <div align="center">
+        <button type="button" class="btn btn-primary">Indeed Scrapper</button>
+        <button type="button" class="btn btn-primary">Glasdoor Visualizations</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/'">SQLite Database</button>
+    </div>
+
+
+    {% endblock %}
+
+    <div class="footer-basic">
+        <footer>
+            
+        </footer>
+    </div>
+</body>
+</html>

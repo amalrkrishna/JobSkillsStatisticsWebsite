@@ -10,3 +10,7 @@ def home(request):
     job_postings = JobPosting.objects.all()  # order by date
 
     return render(request, 'home.html', {'job_postings': job_postings})
+
+def landing_page(request):
+    return render(request, 'landing.html')
+
