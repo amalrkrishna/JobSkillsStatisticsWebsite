@@ -127,5 +127,5 @@ class JobSkillCount(models.Model):
     job_skill = models.ForeignKey(
         'JobSkill',
         on_delete = models.CASCADE,
-        default = -1)
+        default = None)
     posted_count = models.IntegerField(default=0)
