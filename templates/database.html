@@ -16,7 +16,11 @@
                         <h5>{{ job.company }}</h5>
                     </div>
                     <div class="col-sm-4">
-                        <h5>More to come.</h5>
+                        <h5>
+                            {% for skill in job.skills.all %}
+                                {{ skill }}
+                            {% endfor %}
+                        </h5>
                     </div>
                 {% endfor %}
             </div>
