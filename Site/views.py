@@ -21,8 +21,8 @@ def landing_page(request):
 def indeed(request):
     return render(request, 'indeed.html')
 
-def glassdoor(request):
-    return render(request, 'glassdoor.html')
+#def glassdoor(request):
+#    return render(request, 'glassdoor.html')
 
 class Plot(TemplateView):
     template_name = "plot.html"
@@ -31,6 +31,16 @@ class Plot(TemplateView):
         # Call the base implementation first to get a context
         context = super(Plot, self).get_context_data(**kwargs)
         context['plot'] = DisplayData.GetSkillsFromJobRegion("data analyst", "Boston, MA")
+        return context
+
+class PlotGlassDoor(TemplateView):
+    template_name = "glassdoor.html"
+    
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(PlotGlassDoor, self).get_context_data(**kwargs)
+        context['plot'] = DisplayData.GlassdoorPlot1()
+        context['plot2'] = DisplayData.GlassdoorPlot2()
         return context
 
 @csrf_exempt
