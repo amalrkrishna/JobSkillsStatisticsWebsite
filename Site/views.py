@@ -8,9 +8,20 @@ from django.views.generic import TemplateView
 import datetime
 
 
-def home(request):
+def database(request):
     job_postings = JobPosting.objects.all()  # order by date
-    return render(request, 'home.html', {'job_postings': job_postings})
+
+    return render(request, 'database.html', {'job_postings': job_postings})
+
+def landing_page(request):
+    data = "hello"
+    return render(request, 'landing.html', {'data':data})
+
+def indeed(request):
+    return render(request, 'indeed.html')
+
+def glassdoor(request):
+    return render(request, 'glassdoor.html')
 
 class Plot(TemplateView):
     template_name = "plot.html"

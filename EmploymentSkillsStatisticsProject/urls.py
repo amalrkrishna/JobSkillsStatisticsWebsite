@@ -19,6 +19,9 @@ from Site.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home),
+    url(r'^database/', database),
+    url(r'^indeed/', indeed),
+    url(r'^glassdoor/', glassdoor),
     url(r'^plot/', Plot.as_view(), name='plotURL'),
+    url(r'^$', landing_page),
 ]
