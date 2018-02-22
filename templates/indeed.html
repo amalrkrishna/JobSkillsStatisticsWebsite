@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+    <br>
+    <h2 align="center"><b>Job Statistics Portal</b></h2><br><br>
+    <p align="center">Enter city and the job title to witness magic.</p> <br><br>   
+    <form action="/indeed_submit/" method="post">
+        {% csrf_token %}
+        <div align="center" class="form-group">
+            <label for="sel1"></label>
+            <select class="form-control" id="sel1" name="sel1" style="max-width:20%;display: inline-block;">
+                <option value="" selected="selected">Which City?</option>
+                <option>Boston</option>
+                <option>New York</option>
+                <option>San Francisco</option>
+                <option>Mars LMFAO</option>
+            </select>
+            <label for="sel2"></label>
+            <select class="form-control" id="sel2" name="sel2" style="max-width:20%;display: inline-block;">
+                <option value="" selected="selected">Do you have a job?</option>
+                <option>Data Scientist</option>
+                <option>Software Engineer</option>
+                <option>President USA</option>
+                <option>WTF?</option>
+            </select>
+            <button type="submit" class="btn btn-primary" style="display: inline-block;">Fire!</button>
+        </div>  
+    </form>
+
+    {% endblock %}
+
+    <div class="footer-basic">
+        <footer>
+            
+        </footer>
+    </div>

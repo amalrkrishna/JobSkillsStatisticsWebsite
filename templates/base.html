@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	{% block head %}
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CS673 Project</title>
@@ -16,6 +18,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery.mask.js' %}"></script>
+    
+    {% endblock %}
 </head>
 
 <body>
@@ -28,10 +32,10 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li role="presentation"><a href="/">Home </a></li>
-                        <li role="presentation"><a href="#">TBD </a></li>
-                        <li role="presentation"><a href="#">TBD </a></li>
-                        <li role="presentation"><a href="#">TBD </a></li>
+                        <li role="presentation"><a href="/">Home</a></li>
+                        <li role="presentation"><a href="/indeed/">Indeed</a></li>
+                        <li role="presentation"><a href="/glassdoor/">Glassdoor</a></li>
+                        <li role="presentation"><a href="/database/">Database</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,6 +50,6 @@
         <footer>
             
         </footer>
-    </div>
+    </div>  
 </body>
 </html>

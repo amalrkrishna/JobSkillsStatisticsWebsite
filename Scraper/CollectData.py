@@ -4,11 +4,12 @@ django.setup()
 
 from Scraper import preprocessing
 from Scraper import scraper
+from Scraper import DisplayData
 from django.db.models import F
 from Site.models import *
 
-if __name__ == "__main__":
-    print('start')
+    
+def runPopulate():
     job_title="data analyst"
     job_location = "Boston, MA"
     unscrubbed_data = scraper.scrape(job_title, job_location)
@@ -34,7 +35,11 @@ if __name__ == "__main__":
         count, createdCount = JobSkillCount.objects.get_or_create(job_skill_id = p.id)
         JobSkillCount.objects.filter(id = count.id).update(posted_count = F('posted_count')+ counts[jobSkill])
 
-        
+     
+if __name__ == "__main__":    
+    runPopulate()
+    '''DisplayData.GetSkillsFromJobRegion("data analyst", "Boston, MA")'''
+   
     
     
     
