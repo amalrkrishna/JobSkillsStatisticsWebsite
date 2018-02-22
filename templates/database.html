@@ -1,29 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
+{% load static %}
+    {% block content %}
+    <br>
+    <h2 align="center"><b>Job Statistics Database</b></h2><br><br>
 
-{% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-10 col-sm-offset-1"><br /><br />
-                <div class="col-sm-4"><h4>Title</h4></div>
-                <div class="col-sm-4"><h4>Company</h4></div>
-                <div class="col-sm-4"><h4>TBD</h4></div>
-                <br /><hr />
-                {% for job in job_postings %}
-                    <div class="col-sm-4">
-                        <h5>{{ job.title }}</h5>
-                    </div>
-                    <div class="col-sm-4">
-                        <h5>{{ job.company }}</h5>
-                    </div>
-                    <div class="col-sm-4">
-                        <h5>
-                            {% for skill in job.skills.all %}
-                                {{ skill }}
-                            {% endfor %}
-                        </h5>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+
+    <p align="center">This website is developed by 7 awesome folks for the CS673 Software Engineering class.</p>
+
+    <br>
+
+    <div align="center">
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/indeed_database/'">Indeed Database</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/glassdoor_database/'">Glasdoor Database</button>
     </div>
-{% endblock %}
+
+    {% endblock %}
+
+    <div class="footer-basic">
+        <footer>
+            
+        </footer>
+    </div>

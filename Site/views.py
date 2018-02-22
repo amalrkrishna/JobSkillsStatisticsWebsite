@@ -6,23 +6,30 @@ from Site.models import *
 from Scraper import DisplayData
 from django.views.generic import TemplateView
 import datetime
+import pandas as pd
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 
-def database(request):
+
+def glassdoor_database(request):
+    data = pd.read_excel('data/LPR_data-2018-01.xlsx')
+    data_html = data.to_html()
+    context = {'loaded_data': data_html}
+    return render(request, 'glassdoor_database.html', context)
+
+def indeed_database(request):
     job_postings = JobPosting.objects.all()  # order by date
-    return render(request, 'database.html', {'job_postings': job_postings})
+    return render(request, 'indeed_database.html', {'job_postings': job_postings})
+
+def database(request):
+    return render(request, 'database.html')
 
 def landing_page(request):
-    data = "hello"
-    return render(request, 'landing.html', {'data':data})
+    return render(request, 'landing.html')
 
 def indeed(request):
     return render(request, 'indeed.html')
-
-#def glassdoor(request):
-#    return render(request, 'glassdoor.html')
 
 class Plot(TemplateView):
     template_name = "plot.html"

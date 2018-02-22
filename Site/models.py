@@ -25,6 +25,14 @@ class JobSkill(models.Model):
 class JobSkillAdmin(admin.ModelAdmin):
     list_display = ('skill', 'category')
 
+class GlassDoorModel(models.Model):
+    metro = models.CharField(max_length=64)
+    dimension_type = models.CharField(blank=True, max_length=64, default='')
+    month  = models.DateTimeField(null=True, blank=True, auto_now=False)
+    dimension = models.CharField(blank=True, max_length=64, default='')
+    measure = models.CharField(blank=True, max_length=64, default='')
+    value = models.CharField(blank=True, max_length=64, default='')
+    yoy = models.CharField(blank=True, max_length=64, default='')
 
 class JobPosting(models.Model):
     # job_id = models.CharField(max_length=16, unique=True)  # default=None

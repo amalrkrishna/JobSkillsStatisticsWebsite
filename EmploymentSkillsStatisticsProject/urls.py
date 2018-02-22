@@ -20,6 +20,8 @@ from Site.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^database/', database),
+    url(r'^indeed_database/', indeed_database),
+    url(r'^glassdoor_database/', glassdoor_database),
     url(r'^indeed/', indeed),
     url(r'^glassdoor/',PlotGlassDoor.as_view(), name='plotGlassdoor'),
     url(r'^plot/', Plot.as_view(), name='plotURL'),
