@@ -87,7 +87,7 @@ def GlassdoorPlot2():
         ),
         yaxis=dict(
             autorange=True,
-            title="Median Pay"
+            title="Job Openings"
         )
         )
 
