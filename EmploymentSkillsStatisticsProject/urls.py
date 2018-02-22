@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^indeed/', indeed),
     url(r'^glassdoor/', glassdoor),
     url(r'^plot/', Plot.as_view(), name='plotURL'),
+    url(r'^indeed_submit/', indeed_form_submit),
     url(r'^$', landing_page),
 ]

@@ -18,6 +18,7 @@ def GetSkillsFromJobRegion(job, region):
             job_skill_return.append((skill, 0))
         
     df = pd.DataFrame( [[ij for ij in i] for i in job_skill_return] )
+    #print(df)
     graphData = go.Bar(
         x=df[0],
         y=df[1])
@@ -27,6 +28,7 @@ def GetSkillsFromJobRegion(job, region):
         showlegend=False,
         autosize=False
         )
+
     figure = go.Figure(data = [graphData], layout = graphLayout)
     plot_div = plot(figure, output_type='div', include_plotlyjs=False)
     '''return url'''

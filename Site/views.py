@@ -6,11 +6,12 @@ from Site.models import *
 from Scraper import DisplayData
 from django.views.generic import TemplateView
 import datetime
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 
 def database(request):
     job_postings = JobPosting.objects.all()  # order by date
-
     return render(request, 'database.html', {'job_postings': job_postings})
 
 def landing_page(request):
@@ -31,3 +32,12 @@ class Plot(TemplateView):
         context = super(Plot, self).get_context_data(**kwargs)
         context['plot'] = DisplayData.GetSkillsFromJobRegion("data analyst", "Boston, MA")
         return context
+
+@csrf_exempt
+def indeed_form_submit(request):
+    if request.method == "POST":
+        city = request.POST.get('sel1')
+        job_title = request.POST.get('sel2')
+        print(job_title,city)
+        plot = DisplayData.GetSkillsFromJobRegion(job_title,city)
+        return render(request, 'indeed.html', plot)
