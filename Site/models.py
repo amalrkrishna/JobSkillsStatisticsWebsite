@@ -6,7 +6,7 @@ from django.template.defaultfilters import slugify
 from django.conf import settings
 import datetime
 
-#from _overlapped import NULL - from which package does this come from. Can't seem to install it for some reason - Amal
+#from _overlapped import NULL #- from which package does this come from. Can't seem to install it for some reason - Amal
 
 
 JOB_CATEGORIES = (
@@ -123,9 +123,9 @@ class JobPosting(models.Model):
 class JobPostingAdmin(admin.ModelAdmin):
     list_display = ('title', 'company', 'city', 'state', 'date_posted')
     
-#class JobSkillCount(models.Model):
-    #job_skill = models.ForeignKey(
-    #    'JobSkill',
-    #    on_delete = models.CASCADE,
-    #    default = NULL)
-    #posted_count = models.IntegerField(default=0)
+class JobSkillCount(models.Model):
+    job_skill = models.ForeignKey(
+        'JobSkill',
+        on_delete = models.CASCADE,
+        default = -1)
+    posted_count = models.IntegerField(default=0)
