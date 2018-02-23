@@ -188,3 +188,34 @@ def GlassdoorPlot5():
     figure = go.Figure(data = [graphData], layout = graphLayout)
     plot_USTotEmp = plot(figure, output_type='div', include_plotlyjs=False)
     return plot_USTotEmp
+
+def GlassdoorPlot6():
+    Jan2018 = pd.read_excel('data/LPR_data-2018-01.xlsx')
+
+    USMedianPayBox = Jan2018[Jan2018['Measure'] == 'Median Base Pay']
+
+    graphData = go.Box(
+        x=USMedianPayBox['Metro'],
+        y=USMedianPayBox['Value'],
+        marker=dict(color='red'),
+        )
+    
+    '''url = py.plot([graphData], output_type='div', include_plotlyjs=False)'''
+    graphLayout = go.Layout(
+        title='Median Pay box plot in top US Cities',
+        showlegend=False,
+        autosize=False,
+        width=1100,
+        height=800,
+        xaxis=dict(
+            autorange=True,
+        ),
+        yaxis=dict(
+            autorange=True,
+            title="Median Pay"
+        )
+        )
+
+    figure = go.Figure(data = [graphData], layout = graphLayout)
+    plot_USMPBox = plot(figure, output_type='div', include_plotlyjs=False)
+    return plot_USMPBox

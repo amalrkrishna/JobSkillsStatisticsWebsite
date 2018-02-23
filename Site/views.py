@@ -52,6 +52,7 @@ class PlotGlassDoor(TemplateView):
         context['plot3'] = DisplayData.GlassdoorPlot3()
         context['plot4'] = DisplayData.GlassdoorPlot4()
         context['plot5'] = DisplayData.GlassdoorPlot5()
+        context['plot6'] = DisplayData.GlassdoorPlot6()
         return context
 
 @csrf_exempt
