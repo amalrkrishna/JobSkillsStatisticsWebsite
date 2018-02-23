@@ -51,7 +51,6 @@ class PlotGlassDoor(TemplateView):
         context['plot3'] = DisplayData.GlassdoorPlot3()
         context['plot4'] = DisplayData.GlassdoorPlot4()
         context['plot5'] = DisplayData.GlassdoorPlot5()
-
         return context
 
 @csrf_exempt
@@ -59,6 +58,8 @@ def indeed_form_submit(request):
     if request.method == "POST":
         city = request.POST.get('sel1')
         job_title = request.POST.get('sel2')
-        print(job_title,city)
-        plot = DisplayData.GetSkillsFromJobRegion(job_title,city)
-        return render(request, 'indeed.html', plot)
+        #print(job_title, city)
+        indeed_plot=DisplayData.IndeedPlot1(job_title,city)
+
+        #print(indeed_plot)
+        return render(request, 'indeed.html', indeed_plot)

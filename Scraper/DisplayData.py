@@ -3,6 +3,9 @@ from plotly.offline import plot
 import plotly.graph_objs as go
 from plotly.graph_objs import *
 from Site.models import *
+from Scraper import preprocessing
+from Scraper import scraper
+from Scraper import DisplayData
 import os
 
 
@@ -19,7 +22,7 @@ def GetSkillsFromJobRegion(job, region):
             job_skill_return.append((skill, 0))
         
     df = pd.DataFrame( [[ij for ij in i] for i in job_skill_return] )
-    #print(df)
+    print(df[0])
     graphData = go.Bar(
         x=df[0],
         y=df[1])
@@ -34,6 +37,26 @@ def GetSkillsFromJobRegion(job, region):
     plot_div = plot(figure, output_type='div', include_plotlyjs=False)
     '''return url'''
     return plot_div
+
+def IndeedPlot1(job, region):
+    unscrubbed_data = scraper.scrape(job, region)        
+    df=pd.DataFrame(unscrubbed_data)
+
+
+    graphData = go.Bar(
+        x=df[0],
+        y=df[1])
+    
+    '''url = py.plot([graphData], output_type='div', include_plotlyjs=False)'''
+    graphLayout = go.Layout(
+        showlegend=False,
+        autosize=False
+        )
+
+    figure = go.Figure(data = [graphData], layout = graphLayout)
+    plot_Indeed = plot(figure, output_type='div', include_plotlyjs=False)
+    '''return url'''
+    return plot_Indeed
 
 def GlassdoorPlot1():
     Jan2018 = pd.read_excel('data/LPR_data-2018-01.xlsx')
