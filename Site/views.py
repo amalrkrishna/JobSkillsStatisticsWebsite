@@ -59,7 +59,7 @@ def indeed_form_submit(request):
         city = request.POST.get('sel1')
         job_title = request.POST.get('sel2')
         #print(job_title, city)
-        indeed_plot=DisplayData.IndeedPlot1(job_title,city)
+        indeed_plot=DisplayData.IndeedPlot1(job_title, city)
 
         #print(indeed_plot)
         return render(request, 'indeed.html', indeed_plot)
