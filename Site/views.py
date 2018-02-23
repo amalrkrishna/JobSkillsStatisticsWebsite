@@ -9,6 +9,7 @@ import datetime
 import pandas as pd
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from django.template.loader import render_to_string
 
 
 
@@ -58,8 +59,7 @@ def indeed_form_submit(request):
     if request.method == "POST":
         city = request.POST.get('sel1')
         job_title = request.POST.get('sel2')
-        #print(job_title, city)
-        indeed_plot=DisplayData.IndeedPlot1(job_title, city)
 
-        #print(indeed_plot)
-        return render(request, 'indeed.html', indeed_plot)
+
+        indeed_plot=DisplayData.GetSkillsFromJobRegion(job_title, city)
+        return render(request, 'indeed.html', {'indeed_plot' : indeed_plot})

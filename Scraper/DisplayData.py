@@ -38,26 +38,6 @@ def GetSkillsFromJobRegion(job, region):
     '''return url'''
     return plot_div
 
-def IndeedPlot1(job, region):
-    unscrubbed_data = scraper.scrape(job, region)        
-    df=pd.DataFrame(unscrubbed_data)
-
-
-    graphData = go.Bar(
-        x=df[0],
-        y=df[1])
-    
-    '''url = py.plot([graphData], output_type='div', include_plotlyjs=False)'''
-    graphLayout = go.Layout(
-        showlegend=False,
-        autosize=False
-        )
-
-    figure = go.Figure(data = [graphData], layout = graphLayout)
-    plot_Indeed = plot(figure, output_type='div', include_plotlyjs=False)
-    '''return url'''
-    return plot_Indeed
-
 def GlassdoorPlot1():
     Jan2018 = pd.read_excel('data/LPR_data-2018-01.xlsx')
 
