@@ -23,8 +23,7 @@ urlpatterns = [
     url(r'^indeed_database/', indeed_database),
     url(r'^glassdoor_database/', glassdoor_database),
     url(r'^indeed/', indeed),
-    url(r'^glassdoor/',PlotGlassDoor.as_view(), name='plotGlassdoor'),
+    url(r'^glassdoor/',glassdoor),
     url(r'^plot/', Plot.as_view(), name='plotURL'),
-    url(r'^indeed_submit/', indeed_form_submit),
     url(r'^$', landing_page),
 ]
