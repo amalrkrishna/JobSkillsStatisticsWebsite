@@ -9,7 +9,58 @@
     {% block content %}
     <br>
     <h2 align="center"><b>Job Statistics Portal - Glassdoor</b></h2><br><br>
-    <h3 align="center">General Statistics</h3> <br><br>   
+    <div style="width: 50%; float:left">
+                <h3 align="center">General Statistics</h3> <br><br>   
+                <form action="" method="get">
+                        {% csrf_token %}
+                        <div align="center" class="form-group">
+                            <label for="genstat"></label>
+                            <select class="form-control" id="genstat" name="genstat" style="max-width:20%;display: inline-block;">
+                                <option value="" selected="selected">General Statistics</option>
+                                <option>Metro Median Pay</option>
+                                <option>Job Openings</option>
+                                <option>Labor Force Size</option>
+                                <option>Unemployment Rate</option>
+                                <option>Total Employment</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary" style="display: inline-block;">Fire!</button>
+                        </div>  
+                </form>
+    </div>
+
+            <div style="width: 50%; float:right">
+                <h3 align="center">Box Plots</h3> <br><br>   
+                <form action="" method="get">
+                        {% csrf_token %}
+                        <div align="center" class="form-group">
+                            <label for="boxplot"></label>
+                            <select class="form-control" id="boxplot" name="boxplot" style="max-width:20%;display: inline-block;">
+                                <option value="" selected="selected">Box Plot</option>
+                                <option>Median Base Pay</option>
+                                <option>Job Title</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary" style="display: inline-block;">Fire!</button>
+                        </div>  
+                </form>
+            </div>
+    
+    {%if plot%}
+
+        <div class="container">
+                <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row" style="border: 1px solid black">
+                                {# <div id="plot_container" class="col-md-12">{{plot|safe}}</div>#}
+                                <div class="col-md-12">{{plot|safe}}</div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+    {% endif %}
+
+    {%if plot6%}
+
     <div class="container">
         <div class="row">
                 <div class="col-sm-12">
@@ -20,54 +71,22 @@
                 </div>
         </div>
     </div>
-    <br>
+    {% endif %}
+
+    {%if plot2%}
 
     <div class="container">
             <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="row" style="border: 1px solid black">
-                            {# <div id="plot_container" class="col-md-6">{{plot1|safe}}</div>#}
-                            <div class="col-md-6">{{plot1|safe}}</div>
+                            {# <div id="plot_container" class="col-md-12">{{plot2|safe}}</div>#}
+                            <div class="col-md-12">{{plot2|safe}}</div>
                         </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                            <div class="row" style="border: 1px solid black">
-                                {# <div id="plot_container" class="col-md-6">{{plot2|safe}}</div>#}
-                                <div class="col-md-6">{{plot2|safe}}</div>
-                            </div>
                     </div>
             </div>
-    </div>
-    <br>
-    <div class="container">
-        <div class="row">
-                <div class="col-sm-6">
-                    <div class="row" style="border: 1px solid black">
-                        {# <div id="plot_container" class="col-md-6">{{plot3|safe}}</div>#}
-                        <div class="col-md-6">{{plot3|safe}}</div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                        <div class="row" style="border: 1px solid black">
-                            {# <div id="plot_container" class="col-md-6">{{plot4|safe}}</div>#}
-                            <div class="col-md-6">{{plot4|safe}}</div>
-                        </div>
-                </div>
         </div>
-    </div>
+    {% endif %}
     <br>
-    <div class="container">
-        <div class="row">
-                <div class="col-sm-6">
-                    <div class="row" style="border: 1px solid black">
-                        {# <div id="plot_container" class="col-md-6">{{plot5|safe}}</div>#}
-                        <div class="col-md-6">{{plot5|safe}}</div>
-                    </div>
-                </div>
-        </div>
-    </div>
 
     {% endblock %}
 
