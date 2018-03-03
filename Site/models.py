@@ -6,9 +6,6 @@ from django.template.defaultfilters import slugify
 from django.conf import settings
 import datetime
 
-#from _overlapped import NULL #- from which package does this come from. Can't seem to install it for some reason - Amal
-
-
 JOB_CATEGORIES = (
     ('data_scientist', 'Data Scientist'),
     ('test', 'Test')
@@ -123,9 +120,66 @@ class JobPosting(models.Model):
 class JobPostingAdmin(admin.ModelAdmin):
     list_display = ('title', 'company', 'city', 'state', 'date_posted')
     
+class Geography(models.Model):
+    Country =       models.CharField(max_length = 64, default = '')
+    CountryCode =   models.IntegerField(default = -1)
+    Area =          models.CharField(max_length = 64, default = '')
+    AreaCode =      models.IntegerField(default = -1)
+    SubArea =       models.CharField(max_length = 64, default = '')
+    SubAreaCode =   models.IntegerField(default = -1)
+    
 class JobSkillCount(models.Model):
     job_skill = models.ForeignKey(
         'JobSkill',
         on_delete = models.CASCADE,
         default = None)
-    posted_count = models.IntegerField(default=0)
+    posted_count =  models.IntegerField(default=0)
+   
+class Cities(models.Model):
+    Country =       models.CharField(max_length = 64, default = '')
+    CountryCode =   models.IntegerField(default = -1)
+    Area =          models.CharField(max_length = 64, default = '')
+    AreaCode =      models.IntegerField(default = -1)
+    County = 		models.CharField(max_length = 64, default = '')
+    CountyCode = 	models.IntegerField(default = -1)
+    City =          models.CharField(max_length = 64, default = '')
+
+class Jobs(models.Model):
+    category = models.CharField(max_length=64, choices=JOB_CATEGORIES)
+    
+class Skills(models.Model):
+    skill = models.CharField(max_length=64)
+
+class JobSkillRegionDateCount(models.Model):
+    job = models.ForeignKey(
+        'Jobs',
+        on_delete = models.CASCADE,
+        default = None)
+    skill = models.ForeignKey(
+        'Skills',
+        on_delete = models.CASCADE,
+        default = None)
+    geography =     models.ForeignKey(
+        'Geography',
+        on_delete = models.CASCADE,
+        default = None)
+    start_date =    models.DateTimeField(null = True, blank = True, auto_now = False)
+    end_date =      models.DateTimeField(null = True, blank = True, auto_now = False)
+    posted_count =  models.IntegerField(default = 0)
+    
+class JobSkillCityDateCount(models.Model):
+    job = models.ForeignKey(
+        'Jobs',
+        on_delete = models.CASCADE,
+        default = None)
+    skill = models.ForeignKey(
+        'Skills',
+        on_delete = models.CASCADE,
+        default = None)
+    city =     models.ForeignKey(
+        'Cities',
+        on_delete = models.CASCADE,
+        default = None)
+    start_date =    models.DateTimeField(null = True, blank = True, auto_now = False)
+    end_date =      models.DateTimeField(null = True, blank = True, auto_now = False)
+    posted_count =  models.IntegerField(default = 0)

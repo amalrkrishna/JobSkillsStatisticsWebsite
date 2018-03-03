@@ -37,7 +37,7 @@ class IndeedPlot(TemplateView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(IndeedPlot, self).get_context_data(**kwargs)
-        context['plot'] = DisplayData.GetSkillsFromJobRegion(kwargs['job'], kwargs['city'])
+        context['plot'] = DisplayData.GetSkillsFromJobRegionDateCount(kwargs['job'], kwargs['city'])
         return context
 
 @csrf_exempt
