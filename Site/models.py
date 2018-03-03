@@ -128,9 +128,35 @@ class Geography(models.Model):
     SubArea =       models.CharField(max_length = 64, default = '')
     SubAreaCode =   models.IntegerField(default = -1)
     
-class JobSkillRegionDateCount(models.Model):
-    job_skill =     models.ForeignKey(
+class JobSkillCount(models.Model):
+    job_skill = models.ForeignKey(
         'JobSkill',
+        on_delete = models.CASCADE,
+        default = None)
+    posted_count =  models.IntegerField(default=0)
+   
+class Cities(models.Model):
+    Country =       models.CharField(max_length = 64, default = '')
+    CountryCode =   models.IntegerField(default = -1)
+    Area =          models.CharField(max_length = 64, default = '')
+    AreaCode =      models.IntegerField(default = -1)
+    County = 		models.CharField(max_length = 64, default = '')
+    CountyCode = 	models.IntegerField(default = -1)
+    City =          models.CharField(max_length = 64, default = '')
+
+class Jobs(models.Model):
+    category = models.CharField(max_length=64, choices=JOB_CATEGORIES)
+    
+class Skills(models.Model):
+    skill = models.CharField(max_length=64)
+
+class JobSkillRegionDateCount(models.Model):
+    job = models.ForeignKey(
+        'Jobs',
+        on_delete = models.CASCADE,
+        default = None)
+    skill = models.ForeignKey(
+        'Skills',
         on_delete = models.CASCADE,
         default = None)
     geography =     models.ForeignKey(
@@ -141,12 +167,19 @@ class JobSkillRegionDateCount(models.Model):
     end_date =      models.DateTimeField(null = True, blank = True, auto_now = False)
     posted_count =  models.IntegerField(default = 0)
     
-class JobSkillCount(models.Model):
-    job_skill = models.ForeignKey(
-        'JobSkill',
+class JobSkillCityDateCount(models.Model):
+    job = models.ForeignKey(
+        'Jobs',
         on_delete = models.CASCADE,
         default = None)
-    posted_count =  models.IntegerField(default=0)
-   
-   
-   
+    skill = models.ForeignKey(
+        'Skills',
+        on_delete = models.CASCADE,
+        default = None)
+    city =     models.ForeignKey(
+        'Cities',
+        on_delete = models.CASCADE,
+        default = None)
+    start_date =    models.DateTimeField(null = True, blank = True, auto_now = False)
+    end_date =      models.DateTimeField(null = True, blank = True, auto_now = False)
+    posted_count =  models.IntegerField(default = 0)
