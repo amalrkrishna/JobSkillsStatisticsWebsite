@@ -1,32 +1,52 @@
 {% extends 'base.html' %}
-{% load static %}
+
+{% block head %}
+{{block.super}}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
 
     {% block content %}
     <br>
-    <h2 align="center"><b>Job Statistics Portal</b></h2><br><br>
+    <h2 align="center"><b>Job Statistics Portal - Indeed</b></h2><br><br>
     <p align="center">Enter city and the job title to witness magic.</p> <br><br>   
-    <form action="/indeed_submit/" method="post">
+    <form action="" method="get">
         {% csrf_token %}
         <div align="center" class="form-group">
             <label for="sel1"></label>
-            <select class="form-control" id="sel1" name="sel1" style="max-width:20%;display: inline-block;">
+            <select class="form-control" id="city" name="city" style="max-width:20%;display: inline-block;">
                 <option value="" selected="selected">Which City?</option>
-                <option>Boston</option>
-                <option>New York</option>
-                <option>San Francisco</option>
-                <option>Mars LMFAO</option>
+                <option>Boston, Massachusetts</option>
+                <option>New York, New York</option>
+                <option>San Francisco, California</option>
             </select>
             <label for="sel2"></label>
-            <select class="form-control" id="sel2" name="sel2" style="max-width:20%;display: inline-block;">
+            <select class="form-control" id="job" name="job" style="max-width:20%;display: inline-block;">
                 <option value="" selected="selected">Do you have a job?</option>
-                <option>Data Scientist</option>
-                <option>Software Engineer</option>
-                <option>President USA</option>
+                <option>data scientist</option>
+                <option>computer scientist</option>
+				<option>software developer</option>
+				<option>information technology</option>
+				<option>network architect</option>
+				<option>database administrator</option>
+				<option>web developer</option>
+				<option>software engineer</option>
                 <option>WTF?</option>
             </select>
             <button type="submit" class="btn btn-primary" style="display: inline-block;">Fire!</button>
         </div>  
     </form>
+    
+
+    {% if plot %}
+        <!-- /.container -->
+        <div class="container">
+            <div class="row" style="border: 1px solid black">
+            {# <div id="plot_container" class="col-md-8 col-md-offset-2">{{plot|safe}}</div>#}
+            <div class="col-md-12">{{plot|safe}}</div>
+            </div>
+        </div>
+        <!-- /.container -->
+    {% endif %}
 
     {% endblock %}
 
