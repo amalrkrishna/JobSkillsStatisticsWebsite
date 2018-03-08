@@ -110,25 +110,21 @@ def GetSkillsFromJobRegion(job, region):
 
 
 def CompareJobsPlot(job1, job2):
-    print('heLLO')
-    jobs = pd.DataFrame(list(Jobs.objects.filter(Q(category=job1) | Q(category=job2)).values()))
+    #jobs = pd.DataFrame(list(Jobs.objects.filter(Q(category=job1) | Q(category=job2)).values()))
 
     job1_skills = pd.DataFrame(list(JobSkillRegionDateCount.objects.filter(job__category=job1).all().values()))
     job2_skills = pd.DataFrame(list(JobSkillRegionDateCount.objects.filter(job__category=job2).all().values()))
 
-    #print(job1_skills)
-
     #sum post counts by skill
-
     job1_skills = job1_skills[['skill_id', 'posted_count']].groupby('skill_id', as_index=False).sum()
     job2_skills = job2_skills[['skill_id', 'posted_count']].groupby('skill_id', as_index=False).sum()
 
-    #get skill names
+    #add skill names
     skills = pd.DataFrame(list(Skills.objects.all().values()))
-    #print(job1_skills.columns.values.tolist())
     skills = pd.merge(skills, job1_skills, left_on='id', right_on='skill_id')
     skills = pd.merge(skills, job2_skills, left_on='id', right_on='skill_id')
     skills.columns= ['id', 'skill', 'skill_id1', 'job1_count', 'skill_id2', 'job2_count']
+    #rank skills by post count
     skills['job1_rank'] = skills['job1_count'].rank(ascending=False)
     skills['job2_rank'] = skills['job2_count'].rank(ascending=False)
 
