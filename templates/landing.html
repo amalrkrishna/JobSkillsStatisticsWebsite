@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% load static %}
+    {% block content %}
+    <br>
+    <h2 align="center"><b>Job Statistics Portal</b></h2><br><br>
+
+
+    <p align="center">This website is developed by 7 awesome folks for the CS673 Software Engineering class.</p>
+
+    <br>
+
+    <div align="center">
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/indeed/'">Indeed Scrapper</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/indeed_compare/'">Compare Jobs</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/glassdoor/'">Glasdoor Visualizations</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/database/'">Database</button>
+    </div>
+
+    {% endblock %}
+
+    <div class="footer-basic">
+        <footer>
+            
+        </footer>
+    </div>

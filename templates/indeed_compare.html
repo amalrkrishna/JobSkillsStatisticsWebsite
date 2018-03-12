@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{block.super}}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+
+    {% block content %}
+    <br>
+    <h2 align="center"><b>Job Statistics Portal - Compare Job Skillsets</b></h2><br><br>
+    <p align="center">Choose two jobs to see how their skillsets compare.</p> <br><br>
+    <form action="" method="get">
+        {% csrf_token %}
+        <div align="center" class="form-group">
+            <label for="sel1"></label>
+            <select class="form-control" id="job1" name="job1" style="max-width:20%;display: inline-block;">
+                <option value="" selected="selected">Choose a job</option>
+                <option>data scientist</option>
+                <option>computer scientist</option>
+				<option>software developer</option>
+				<option>information technology</option>
+				<option>network architect</option>
+				<option>database administrator</option>
+				<option>web developer</option>
+				<option>software engineer</option>
+                <option>WTF?</option>
+            </select>
+            <label for="sel2"></label>
+            <select class="form-control" id="job2" name="job2" style="max-width:20%;display: inline-block;">
+                <option value="" selected="selected">Choose a second job</option>
+                <option>data scientist</option>
+                <option>computer scientist</option>
+				<option>software developer</option>
+				<option>information technology</option>
+				<option>network architect</option>
+				<option>database administrator</option>
+				<option>web developer</option>
+				<option>software engineer</option>
+                <option>WTF?</option>
+            </select>
+            <button type="submit" class="btn btn-primary" style="display: inline-block;">Fire!</button>
+        </div>  
+    </form>
+    
+
+    {% if plot %}
+        <!-- /.container -->
+        <div class="container">
+            <div class="row" style="border: 1px solid black">
+            {# <div id="plot_container" class="col-md-8 col-md-offset-2">{{plot|safe}}</div>#}
+            <div class="col-md-12">{{plot|safe}}</div>
+            </div>
+        </div>
+        <!-- /.container -->
+    {% endif %}
+
+    {% endblock %}
+
+    <div class="footer-basic">
+        <footer>
+            
+        </footer>
+    </div>

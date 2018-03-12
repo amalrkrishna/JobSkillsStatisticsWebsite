@@ -123,12 +123,12 @@ def scrape(job_title="data analyst", job_location = "Boston, MA"):
 
 # I think we can probably combine these two for loops into a single loop
 
-    for page in range(1):  #
+    for page in range(10):  #
         counter = page * 10
         url = "https://www.indeed.com/jobs?q=" + str(job_title) + "&l=" + str(job_location) + "&start=" + str(counter)
         url_list.append(url)
 
-    for x in range(1):           # number of pages to be scraped
+    for x in range(10):           # number of pages to be scraped
         url = url_list[x]
         print("\nSearching URL: \n" + url + "\n")
 
@@ -202,9 +202,8 @@ def scrape(job_title="data analyst", job_location = "Boston, MA"):
                 job_soup = job_soup.get_text().lower()
             except:
                 print("x:" + str(x) + "  list_spot:" + str(list_spot) + " matrix_counter: " + str(matrix_counter))
-
                 print(" URL ERROR!!! \n")
-                continue
+        
 
 
             job_soup = job_soup.replace(",", " ")
