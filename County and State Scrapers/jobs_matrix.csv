@@ -1,0 +1,51 @@
+,State Abbreviation,State Name,Job Count,Post per Salary Range,Posts per County,Posts per Company,Post per Experience Level,Posts per Jop Type,Mean Salary Per State
+0,AL,Alabama,18,"{'45000': '1', '40000': '6'}","{'Tuscaloosa': '3', 'Bessemer': '4', 'Shelby': '3', 'Alabaster': '5', 'Jasper': '3'}",{'GMS Mine Repair & Maintenance': '18'},{'Entry_Level': '18'},{'Full-time': '18'},N\A
+1,AK,Alaska,0,{},{},{},{},{},N\A
+2,AZ,Arizona,0,{},{},{},{},{},N\A
+3,AR,Arkansas,0,{},{},{},{},{},N\A
+4,CA,California,0,{},{},{},{},{},N\A
+5,CO,Colorado,1,{},{'Craig': '1'},{'Zooks Solutions': '1'},{'Mid_Level': '1'},{'Full-time': '1'},53920.0
+6,CT,Connecticut,0,{},{},{},{},{},N\A
+7,DE,Delaware,0,{},{},{},{},{},N\A
+8,FL,Florida,0,{},{},{},{},{},N\A
+9,GA,Georgia,0,{},{},{},{},{},N\A
+10,HI,Hawaii,0,{},{},{},{},{},N\A
+11,ID,Idaho,0,{},{},{},{},{},N\A
+12,IL,Illinois,4,{'50000': '1'},"{'Mount Vernon': '1', 'Coulterville': '2', 'Equality': '1'}",{'GMS Mine Repair & Maintenance': '4'},"{'Mid_Level': '1', 'Entry_Level': '3'}",{'Full-time': '4'},40420.0
+13,IN,Indiana,1,{},{'Boonville': '1'},{'ACT Resources Staffing': '1'},{'Entry_Level': '1'},"{'Full-time': '1', 'Temporary': '1'}",39120.0
+14,IA,Iowa,0,{},{},{},{},{},N\A
+15,KS,Kansas,0,{},{},{},{},{},N\A
+16,KY,Kentucky,12,"{'40000': '9', '50000': '2', '30000': '11'}","{'Morganfield': '1', 'Printer': '3', 'Centertown': '1', 'Smilax': '1', 'Waverly': '1', 'Central City': '1', 'Henderson': '2', 'Madisonville': '2'}","{'Zooks Solutions': '1', 'GMS Mine Repair & Maintenance': '6', 'Star Mine Services': '1', 'Blackhawk Mining LLC': '4'}","{'Mid_Level': '1', 'Entry_Level': '11'}","{'Full-time': '11', 'Contract': '1'}",40940.0
+17,LA,Louisiana,0,{},{},{},{},{},N\A
+18,ME,Maine,0,{},{},{},{},{},N\A
+19,MD,Maryland,0,{},{},{},{},{},N\A
+20,MA,Massachusetts,0,{},{},{},{},{},N\A
+21,MI,Michigan,0,{},{},{},{},{},N\A
+22,MN,Minnesota,0,{},{},{},{},{},N\A
+23,MS,Mississippi,0,{},{},{},{},{},N\A
+24,MO,Missouri,0,{},{},{},{},{},N\A
+25,MT,Montana,0,{},{},{},{},{},N\A
+26,NE,Nebraska,0,{},{},{},{},{},N\A
+27,NV,Nevada,0,{},{},{},{},{},N\A
+28,NH,New Hampshire,0,{},{},{},{},{},N\A
+29,NJ,New Jersey,0,{},{},{},{},{},N\A
+30,NM,New Mexico,1,{},{'Farmington': '1'},{'Zooks Solutions': '1'},{'Entry_Level': '1'},{'Full-time': '1'},N\A
+31,NY,New York,0,{},{},{},{},{},N\A
+32,NC,North Carolina,0,{},{},{},{},{},N\A
+33,ND,North Dakota,0,{},{},{},{},{},N\A
+34,OH,Ohio,1,{},{'Cadiz': '1'},{'GMS Mine Repair & Maintenance': '1'},{'Entry_Level': '1'},{'Full-time': '1'},33240.0
+35,OK,Oklahoma,0,{},{},{},{},{},N\A
+36,OR,Oregon,0,{},{},{},{},{},N\A
+37,PA,Pennsylvania,6,"{'40000': '4', '60000': '2', '35000': '5'}","{'Bruceton': '2', 'Waynesburg': '3', 'Brave': '1'}","{'GMS Mine Repair & Maintenance': '3', 'Centers for Disease Control and Prevention': '2', 'Murray Energy Corporation': '1'}","{'Mid_Level': '1', 'Entry_Level': '5'}",{'Full-time': '6'},34080.0
+38,RI,Rhode Island,0,{},{},{},{},{},N\A
+39,SC,South Carolina,0,{},{},{},{},{},N\A
+40,SD,South Dakota,0,{},{},{},{},{},N\A
+41,TN,Tennessee,0,{},{},{},{},{},N\A
+42,TX,Texas,0,{},{},{},{},{},N\A
+43,UT,Utah,2,{'50000': '1'},{'Price': '2'},"{'Zooks Solutions': '1', 'Bowie Resources': '1'}","{'Mid_Level': '1', 'Entry_Level': '1'}",{'Full-time': '2'},22900.0
+44,VT,Vermont,0,{},{},{},{},{},N\A
+45,VA,Virginia,3,{},"{'Oakwood': '1', 'Grundy': '1', 'Raven': '1'}",{'GMS Mine Repair & Maintenance': '3'},{'Entry_Level': '3'},{'Full-time': '3'},N\A
+46,WA,Washington,0,{},{},{},{},{},N\A
+47,WV,West Virginia,24,"{'45000': '11', '40000': '19', '50000': '2', '35000': '22'}","{'Bluefield': '1', 'Danville': '1', 'Logan': '1', 'Man': '2', 'Williamson': '1', 'Madison': '1', 'Morgantown': '3', 'War': '1', 'Oceana': '1', 'Charleston': '3', 'Wheeling': '1', 'Cameron': '1', 'Chapmanville': '1', 'Mannington': '1'}","{'Zooks Solutions': '1', 'Blackhawk Mining LLC': '1', 'GMS Mine Repair & Maintenance': '18', 'Murray Energy Corporation': '4'}","{'Mid_Level': '1', 'Entry_Level': '23'}",{'Full-time': '24'},36320.0
+48,WI,Wisconsin,0,{},{},{},{},{},N\A
+49,WY,Wyoming,1,{},{'Rock Springs': '1'},{'Zooks Solutions': '1'},{'Mid_Level': '1'},{'Full-time': '1'},N\A
