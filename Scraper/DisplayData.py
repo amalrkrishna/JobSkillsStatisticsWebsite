@@ -9,6 +9,7 @@ from Scraper import preprocessing
 from Scraper import scraper
 from Scraper import DisplayData
 import os
+from django.db.models import Q
 
 def GetSkillsFromJobRegionDateCount(job, region):
     job_rows = Jobs.objects.filter(category =job).all()
@@ -109,6 +110,58 @@ def GetSkillsFromJobRegion(job, region):
     '''return url'''
     return plot_div
 
+
+def CompareJobsPlot(job1, job2):
+    #jobs = pd.DataFrame(list(Jobs.objects.filter(Q(category=job1) | Q(category=job2)).values()))
+
+    job1_skills = pd.DataFrame(list(JobSkillRegionDateCount.objects.filter(job__category=job1).all().values()))
+    job2_skills = pd.DataFrame(list(JobSkillRegionDateCount.objects.filter(job__category=job2).all().values()))
+
+    #sum post counts by skill
+    job1_skills = job1_skills[['skill_id', 'posted_count']].groupby('skill_id', as_index=False).sum()
+    job2_skills = job2_skills[['skill_id', 'posted_count']].groupby('skill_id', as_index=False).sum()
+
+    #add skill names
+    skills = pd.DataFrame(list(Skills.objects.all().values()))
+    skills = pd.merge(skills, job1_skills, left_on='id', right_on='skill_id')
+    skills = pd.merge(skills, job2_skills, left_on='id', right_on='skill_id')
+    skills.columns= ['id', 'skill', 'skill_id1', 'job1_count', 'skill_id2', 'job2_count']
+    #rank skills by post count
+    skills['job1_rank'] = skills['job1_count'].rank(ascending=False)
+    skills['job2_rank'] = skills['job2_count'].rank(ascending=False)
+
+    graph = go.Scatter(
+        x = skills['job1_rank'],
+        y = skills['job2_rank'],
+        text = skills['skill'],
+        mode='text',
+        hoverinfo= 'text+x+y'
+    )
+
+    '''url = py.plot([graphData], output_type='div', include_plotlyjs=False)'''
+    graphLayout = go.Layout(
+        title='Skills: ' + job1 + ' vs ' + job2,
+        showlegend=False,
+        autosize=False,
+        width=1100,
+        height=800,
+        xaxis=dict(
+            autorange='reversed',
+            title=job1 + ' skill rank',
+            zeroline=False
+        ),
+        yaxis=dict(
+            autorange='reversed',
+            title= job2 + ' skill rank',
+            zeroline=False
+        )
+    )
+
+    figure = go.Figure(data=[graph], layout=graphLayout)
+    plot_div = plot(figure, output_type='div', include_plotlyjs=False)
+    '''return url'''
+    return plot_div
+
 def GlassdoorPlot1(genstat):
     Jan2018 = pd.read_excel('data/LPR_data-2018-01.xlsx')
 
@@ -201,3 +254,10 @@ def GlassdoorPlot6(boxplot):
     figure = go.Figure(data = [graphData], layout = graphLayout)
     plot_USMPBox = plot(figure, output_type='div', include_plotlyjs=False)
     return plot_USMPBox
+
+
+def main():
+    job_rows = Jobs.objects.all()
+    print(job_rows)
+
+main()

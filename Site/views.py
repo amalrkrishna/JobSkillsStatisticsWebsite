@@ -51,6 +51,24 @@ def indeed(request):
     else:
         return render(request, 'indeed.html')
 
+class IndeedComparePlot(TemplateView):
+    template_name = "indeed_compare.html"
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(IndeedComparePlot, self).get_context_data(**kwargs)
+        context['plot'] = DisplayData.CompareJobsPlot(kwargs['job1'], kwargs['job2'])
+        return context
+
+def indeed_compare(request):
+    if request.method == 'GET' and 'job1' in request.GET:
+        job1=request.GET['job1']
+        job2=request.GET['job2']
+        g = IndeedComparePlot()
+        context = g.get_context_data(job1=job1, job2=job2)
+        return render(request, 'indeed_compare.html', context)
+    else:
+        return render(request, 'indeed_compare.html')
+
 class Plot(TemplateView):
     template_name = "plot.html"
     
