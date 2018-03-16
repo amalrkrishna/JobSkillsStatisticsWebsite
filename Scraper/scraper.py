@@ -92,7 +92,7 @@ def column(matrix, i):
     return [row[i] for row in matrix]
 
 
-data_science_skills_list = ["Python", 'sql', "hadoop", " R ", "C#", "SAS", "C++", "Java ",
+data_science_skills_list = ["Python", 'sql', "hadoop", " R ", "C#", " SAS ", "C++", "Java ",
                             "Matlab", "Hive", "Excel", "Perl", "Mapreduce", "noSQL",   #
                             "Spark", "Pig", "Ruby", "JavaScript", "HBase", "Mahout",   #
                             "Tableau", "Scala", "Cassandra", "machine learning", "PhD", "Master's" ]      #
@@ -198,6 +198,7 @@ def scrape(job_title="data analyst", job_location = "Boston, MA"):
 
             try:
                 post_page = requests.get(job_data_matrix[x+list_spot][4])
+                print(post_page.text)
                 job_soup = BeautifulSoup(post_page.text, "html.parser")    #Ideally we should seek to id the description class indeed <div>s to minimize scanning time
                 job_soup = job_soup.get_text().lower()
             except:
@@ -234,6 +235,98 @@ def scrape(job_title="data analyst", job_location = "Boston, MA"):
 # df = pd.DataFrame(returned_job_matrix)
 # df.to_csv("jobs_matrix.csv")
 
+def getJobSkills(pageText):   
+    job_soup = BeautifulSoup(pageText, "html.parser")    #Ideally we should seek to id the description class indeed <div>s to minimize scanning time
+    job_soup = job_soup.get_text().lower()
+    
+    job_soup = job_soup.replace(",", " ")
+    job_soup = job_soup.replace(".", " ")
+    job_soup = job_soup.replace(";", " ")
 
+    data_science_skills_dict = list_to_dict(data_science_skills_list)
+    return incr_dict(data_science_skills_dict, job_soup)
+
+def parsePageText(pageText):
+    w, h =6, 6000;
+    job_data_matrix = [[0 for x in range(w)] for y in range(h)]
+    list_spot = 0
+    matrix_counter = 0
+    job_page_soup_list = []
+    
+    soup = BeautifulSoup(pageText, "html.parser")
+    job_page_soup_list.append(soup)
+    jobs = []
+    for div in soup.find_all(name="div", attrs={"class":"row"}):
+        for a in div.find_all(name="a", attrs={"data-tn-element":"jobTitle"}):
+            jobs.append(a["title"])
+
+
+    companies = []
+    for div in soup.find_all(name="div", attrs={"class":"row"}):
+        company = div.find_all(name="span", attrs = {"class":"company"})
+        if len(company) > 0:
+            for b in company:
+                companies.append(b.text.strip())
+        else:
+            sec_try = div.find_all(name="span", attrs = {"class":"result - link - source"})
+            for span in sec_try:
+                companies.append(span.text.strip())
+
+    post_urls=[]
+    for div in soup.find_all(name="div", attrs={"class": "row"}):
+        for a in div.find_all(name="a", attrs={"data-tn-element": "jobTitle"}):
+            base_url = (a["href"])
+            post_urls.append(" http://indeed.com"+str(base_url))
+
+
+    locations = []
+    spans = soup.find_all(name="span", attrs = {"class" : "location"})
+    for span in spans:
+        locations.append(span.text)
+
+
+
+
+    salaries = []
+    for div in soup.find_all(name="div", attrs={"class" : "row"}):
+        try:
+            salaries.append(div.find("nobr").text)
+        except:
+            try:
+                div_two = div.find(name="div", attrs={"class": "sjcl"})
+                div_three = div_two.find("div")
+                salaries.append(div_three.text.strip())
+            except:
+                salaries.append("No Salary Provided")
+
+
+    list_spot += matrix_counter
+    matrix_counter = 0
+
+    for x in range((len(jobs))):
+        job_data_matrix[x + list_spot][0] = jobs[x]
+        job_data_matrix[x + list_spot][1] = companies[x]
+        job_data_matrix[x + list_spot][2] = salaries[x]
+        job_data_matrix[x + list_spot][3] = locations[x]
+  #      job_data_matrix[x][3] = dates              # NEEDS FIXING
+        job_data_matrix[x+list_spot][4] = post_urls[x]
+
+        try:
+            post_page = requests.get(job_data_matrix[x+list_spot][4])
+        except:
+            print("x:" + str(x) + "  list_spot:" + str(list_spot) + " matrix_counter: " + str(matrix_counter))
+            print(" URL ERROR!!! \n")
+            
+        print(post_page.text)
+        job_data_matrix[x+list_spot][5] = getJobSkills(post_page.text)
+        matrix_counter += 1
+
+    return(job_data_matrix)
+
+
+
+    print("\nJob search finished:")
+    print("Jobs Found: " + str(list_spot + matrix_counter))
+    
 if __name__ == '__main__':
     main()

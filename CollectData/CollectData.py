@@ -32,17 +32,18 @@ def populateMany():
                   "database administrator",
                   "web developer"]    
     
-    regions = Geography.objects.all()
+    regions = Geography.objects.filter(AreaCode = 25).all()
     cities = Cities.objects.all()
     now = datetime.datetime.now()
     
-    '''for region in regions:
+    for region in regions:
         for job in job_titles:
             runPopulateJobSkillRegionData(
                 job,
                 region.SubArea + " County, " + region.Area, 
                 region.id, 
-                now)'''
+                now)
+    '''
     
     for city in cities:
         for job in job_titles:
@@ -50,7 +51,7 @@ def populateMany():
                 job,
                 city.City + ", " + city.Area, 
                 city.id, 
-                now)
+                now)'''
             
 
 def runPopulateJobSkillRegionData(job_title, job_location, geography_id, now):
@@ -77,7 +78,7 @@ def runPopulateJobSkillRegionData(job_title, job_location, geography_id, now):
                         else: 
                             counts[(job_title, thisSkill)] = 1
                     
-        
+        counts = {("", "") : 0}
         del counts[("","")]
         for jobSkill in counts:
             #p, created = JobSkill.objects.get_or_create(category = job_title, skill = jobSkill[1])
@@ -219,12 +220,12 @@ def populateGeography():
                                          SubAreaCode = county_code)
      
 if __name__ == "__main__":    
-    #populateMany()
+    populateMany()
     #populateCity()
     #populateGeography()
     #printShapeFile()
     #runPopulate("data analyst", "Suffolk County, MA")
-    DisplayData.GetSkillsFromJobRegionDateCount("data scientist", "Boston, Massachusetts")
+    #DisplayData.GetSkillsFromJobRegionDateCount("data scientist", "Boston, Massachusetts")
    
     
     
