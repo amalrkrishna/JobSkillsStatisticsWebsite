@@ -1,4 +1,6 @@
 import pandas as pd
+import django
+django.setup()
 from plotly.offline import plot
 import plotly.graph_objs as go
 from plotly.graph_objs import *
