@@ -8,6 +8,26 @@ import re
 import numpy as np
 np.set_printoptions(threshold=np.inf)
 
+class JobData():
+    def __init__(self):
+        self.company = ""
+        self.jobTitle = ""
+        self.salary = ""
+        self.location = ""
+        self.url = ""
+        self.skills = []
+        
+    @classmethod
+    def fromParameters(cls, company, jobTitle, salary, location, url):
+        cls.company = company
+        cls.jobTitle = jobTitle
+        cls.salary = salary
+        cls.location = location
+        cls.url = url
+        cls.skills = []
+        return cls
+    
+
 
 def main():
     returned_job_matrix = scrape("data scientist", "Boston, MA")
@@ -246,15 +266,13 @@ def getJobSkills(pageText):
     data_science_skills_dict = list_to_dict(data_science_skills_list)
     return incr_dict(data_science_skills_dict, job_soup)
 
-def parsePageText(pageText):
-    w, h =6, 6000;
-    job_data_matrix = [[0 for x in range(w)] for y in range(h)]
+def getJobs(pageText):
+    #w, h =6, 6000;
+    #job_data_matrix = [[0 for x in range(w)] for y in range(h)]
     list_spot = 0
     matrix_counter = 0
-    job_page_soup_list = []
     
     soup = BeautifulSoup(pageText, "html.parser")
-    job_page_soup_list.append(soup)
     jobs = []
     for div in soup.find_all(name="div", attrs={"class":"row"}):
         for a in div.find_all(name="a", attrs={"data-tn-element":"jobTitle"}):
@@ -282,7 +300,7 @@ def parsePageText(pageText):
     locations = []
     spans = soup.find_all(name="span", attrs = {"class" : "location"})
     for span in spans:
-        locations.append(span.text)
+        locations.append(span.text.strip())
 
 
 
@@ -303,30 +321,42 @@ def parsePageText(pageText):
     list_spot += matrix_counter
     matrix_counter = 0
 
+    job_data_list = []
+    
     for x in range((len(jobs))):
-        job_data_matrix[x + list_spot][0] = jobs[x]
-        job_data_matrix[x + list_spot][1] = companies[x]
-        job_data_matrix[x + list_spot][2] = salaries[x]
-        job_data_matrix[x + list_spot][3] = locations[x]
-  #      job_data_matrix[x][3] = dates              # NEEDS FIXING
-        job_data_matrix[x+list_spot][4] = post_urls[x]
-
-        try:
-            post_page = requests.get(job_data_matrix[x+list_spot][4])
-        except:
-            print("x:" + str(x) + "  list_spot:" + str(list_spot) + " matrix_counter: " + str(matrix_counter))
-            print(" URL ERROR!!! \n")
-            
-        print(post_page.text)
-        job_data_matrix[x+list_spot][5] = getJobSkills(post_page.text)
+        job_data_list.append(JobData.fromParameters(companies[x], 
+                                                    jobs[x], 
+                                                    salaries[x], 
+                                                    locations[x], 
+                                                    post_urls[x]))
+       
         matrix_counter += 1
-
-    return(job_data_matrix)
-
-
-
     print("\nJob search finished:")
     print("Jobs Found: " + str(list_spot + matrix_counter))
+
+    return(job_data_list)
+    
+    
+def getDataFromJobAndRegion(job_title="data analyst", job_location = "Boston, MA", page_count = 10):
+    
+    job_title = job_title.replace(" ", "+")
+    job_location = job_location.replace(" ", "+")
+    job_location = job_location.replace(",", "%2C")
+
+    for page in range(page_count):
+        counter = page * 10
+        url = "https://www.indeed.com/jobs?q=" + str(job_title) + "&l=" + str(job_location) + "&start=" + str(counter)
+        print("\nSearching URL: \n" + url + "\n")
+        page = requests.get(url)       
+        job_data_list = getJobs(page.text)
+        for job_data in job_data_list:
+            try:
+                post_page = requests.get(job_data.post_url)
+                job_data.skills = getJobSkills(post_page.text)
+            except:
+                print(" URL ERROR!!! \n")
+                
+                
     
 if __name__ == '__main__':
     main()
